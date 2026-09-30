@@ -1194,6 +1194,10 @@ section {
   padding: 0.8rem 1rem;
 }
 
+.disclosure-grid > .reveal {
+  height: 100%;
+}
+
 /* Reveal */
 .reveal {
   opacity: 0;
@@ -1212,13 +1216,25 @@ section {
     display: flex;
   }
 
+  .site-header {
+    backdrop-filter: none;
+  }
+
+  .brand,
+  .nav-toggle {
+    z-index: 4;
+  }
+
   .nav-links {
     position: fixed;
     inset: 0;
     background: var(--white);
     flex-direction: column;
     justify-content: center;
-    gap: 1.4rem;
+    align-items: center;
+    gap: 1.25rem;
+    padding: calc(var(--nav-h) + 1rem) 1.25rem 2rem;
+    overflow-y: auto;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s;
@@ -1231,8 +1247,10 @@ section {
   }
 
   .nav-links a {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: var(--green-deep);
+    text-align: center;
+    line-height: 1.3;
   }
 
   .stats-grid {
@@ -1280,5 +1298,41 @@ section {
   .brand img {
     width: 48px;
     height: 48px;
+  }
+
+  .page-hero {
+    min-height: 36vh;
+    padding: calc(var(--nav-h) + 2rem) 0 2.25rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.85rem, 9vw, 2.4rem);
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+  }
+
+  .disclosure-card {
+    padding: 1.15rem 1rem 1.05rem;
+    border-radius: 14px;
+  }
+
+  .disclosure-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .disclosure-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .disclosure-actions {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .disclosure-actions .btn {
+    width: 100%;
   }
 }
