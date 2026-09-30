@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import GalleryGrid from "@/components/GalleryGrid";
+import CampusReel from "@/components/CampusReel";
 import Reveal from "@/components/Reveal";
 import { calendarEvents } from "@/data/academic-calendar";
 
@@ -158,17 +158,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
+      <section className="reel-section">
         <div className="container">
           <Reveal>
             <p className="section-label">Gallery</p>
             <h2 className="section-title">Moments from campus</h2>
+            <p className="section-lead">
+              Festivals, quizzes, yoga, and everyday joy — a moving look at life
+              at Mega Mind.
+            </p>
           </Reveal>
-          <div style={{ marginTop: "2rem" }}>
-            <GalleryGrid limit={6} />
-          </div>
+        </div>
+        <CampusReel />
+        <div className="container">
           <Reveal>
-            <div style={{ marginTop: "2rem" }}>
+            <div style={{ marginTop: "1.75rem" }}>
               <Link className="btn btn-outline" href="/gallery">
                 View full gallery
               </Link>

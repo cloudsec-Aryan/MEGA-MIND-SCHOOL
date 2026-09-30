@@ -14,7 +14,7 @@ export default function GalleryPage() {
       <section className="page-hero">
         <div className="hero-media">
           <Image
-            src="/images/gallery/school-building.jpg"
+            src="/images/campus/staff-celebration.jpeg"
             alt="Mega Mind School Tosham"
             fill
             priority
@@ -24,7 +24,7 @@ export default function GalleryPage() {
         </div>
         <div className="hero-overlay" />
         <h1>Gallery</h1>
-        <p>Glimpses of campus life, learning spaces, and celebrations.</p>
+        <p>Festivals, classrooms, quizzes, and quiet moments from campus.</p>
       </section>
 
       <section>
@@ -33,8 +33,8 @@ export default function GalleryPage() {
             <p className="section-label">Campus visuals</p>
             <h2 className="section-title">See Mega Mind</h2>
             <p className="section-lead">
-              Tap any image to enlarge. Latest events: Instagram
-              @megamindschooltosham.
+              Landscape and portrait photographs sit in their own frames, so
+              every picture keeps its shape. Tap any image to enlarge.
             </p>
           </Reveal>
           <GalleryGrid />
