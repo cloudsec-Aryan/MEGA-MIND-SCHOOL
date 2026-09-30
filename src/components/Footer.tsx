@@ -25,6 +25,7 @@ export default function Footer() {
             <h4>Explore</h4>
             <Link href="/about">About</Link>
             <Link href="/academics">Academics</Link>
+            <Link href="/academic-calendar">Academic Calendar</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/mandatory-disclosures">Mandatory Disclosures</Link>
             <Link href="/admissions">Admissions</Link>

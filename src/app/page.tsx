@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GalleryGrid from "@/components/GalleryGrid";
 import Reveal from "@/components/Reveal";
+import { calendarEvents } from "@/data/academic-calendar";
 
 export default function HomePage() {
   return (
@@ -170,6 +171,41 @@ export default function HomePage() {
             <div style={{ marginTop: "2rem" }}>
               <Link className="btn btn-outline" href="/gallery">
                 View full gallery
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="sand-section">
+        <div className="container">
+          <Reveal>
+            <p className="section-label">Session 2026–27</p>
+            <h2 className="section-title">Academic calendar</h2>
+            <p className="section-lead">
+              From the April opening day to the March annual function — the
+              milestones families plan around.
+            </p>
+          </Reveal>
+          <div className="home-cal">
+            {calendarEvents
+              .filter((event) =>
+                ["session", "summer", "midterm", "result"].includes(event.id)
+              )
+              .map((event) => (
+                <Reveal key={event.id}>
+                  <article className="home-cal-card" data-tone={event.tone}>
+                    <time>{event.when}</time>
+                    <h3>{event.title}</h3>
+                    <p>{event.detail}</p>
+                  </article>
+                </Reveal>
+              ))}
+          </div>
+          <Reveal>
+            <div style={{ marginTop: "1.75rem" }}>
+              <Link className="btn btn-outline" href="/academic-calendar">
+                Full academic calendar
               </Link>
             </div>
           </Reveal>

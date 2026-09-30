@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import { calendarEvents } from "@/data/academic-calendar";
 
 export const metadata: Metadata = {
   title: "Academics",
@@ -78,6 +79,48 @@ export default function AcademicsPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="sand-section">
+        <div className="container">
+          <Reveal>
+            <p className="section-label">Session 2026–27</p>
+            <h2 className="section-title">Academic calendar</h2>
+            <p className="section-lead">
+              Unit tests, the summer break, half-yearly exams, pre-boards, and
+              the March annual result — as issued by the school.
+            </p>
+          </Reveal>
+          <div className="home-cal">
+            {calendarEvents
+              .filter((event) => event.id !== "practicals")
+              .slice(0, 4)
+              .map((event) => (
+                <Reveal key={event.id}>
+                  <article className="home-cal-card" data-tone={event.tone}>
+                    <time>{event.when}</time>
+                    <h3>{event.title}</h3>
+                    <p>{event.detail}</p>
+                  </article>
+                </Reveal>
+              ))}
+          </div>
+          <Reveal>
+            <div className="action-row">
+              <Link className="btn btn-red" href="/academic-calendar">
+                See the full year
+              </Link>
+              <a
+                className="btn btn-outline"
+                href="/academic-calendar/academic-calendar-2026-27.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Official PDF
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 

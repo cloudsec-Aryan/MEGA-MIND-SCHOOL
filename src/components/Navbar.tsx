@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/academics", label: "Academics" },
+  { href: "/academic-calendar", label: "Calendar" },
   { href: "/gallery", label: "Gallery" },
   { href: "/mandatory-disclosures", label: "Mandatory Disclosures" },
   { href: "/contact", label: "Contact" },
@@ -30,6 +31,13 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="nav-inner">
@@ -48,8 +56,8 @@ export default function Navbar() {
         </Link>
 
         <button
-          className="nav-toggle"
-          aria-label="Open menu"
+          className={`nav-toggle${open ? " is-open" : ""}`}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           type="button"
