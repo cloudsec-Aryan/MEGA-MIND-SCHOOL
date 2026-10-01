@@ -2,10 +2,30 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { siteConfig } from "@/data/site-config";
+
 export const metadata: Metadata = {
-  title: "Mandatory Disclosures",
+  title: "CBSE Mandatory Public Disclosures | Affiliation No. 530773",
   description:
-    "CBSE mandatory public disclosures for Mega Mind Sr. Sec. School, Tosham — building safety, fire safety, hygiene, and land certificates.",
+    "Official CBSE mandatory public disclosures for Mega Mind Sr. Sec. School, Tosham (Bhiwani). Building safety, fire safety, health & sanitation, and land certificates.",
+  keywords: [
+    "CBSE mandatory disclosure Tosham",
+    "Mega Mind School affiliation certificate",
+    "Building safety certificate Mega Mind School",
+    "Fire safety certificate Tosham school",
+    "CBSE Affiliation 530773 documents",
+  ],
+  alternates: {
+    canonical: "/mandatory-disclosures",
+  },
+  openGraph: {
+    title: "CBSE Mandatory Disclosures | Mega Mind Sr. Sec. School Tosham",
+    description:
+      "Public compliance certificates and regulatory documents as mandated by CBSE New Delhi.",
+    url: `${siteConfig.url}/mandatory-disclosures`,
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 576, alt: "Mega Mind Mandatory Disclosures" }],
+  },
 };
 
 const documents = [
@@ -46,11 +66,17 @@ const documents = [
 export default function MandatoryDisclosuresPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Mandatory Disclosures", path: "/mandatory-disclosures" },
+        ]}
+      />
       <section className="page-hero">
         <div className="hero-media">
           <Image
             src="/images/campus.jpg"
-            alt="Mega Mind School campus"
+            alt="Mega Mind School Tosham campus building and facilities"
             fill
             priority
             sizes="100vw"

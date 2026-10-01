@@ -1,23 +1,49 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import { calendarEvents } from "@/data/academic-calendar";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Academics",
+  title: "CBSE Curriculum & Academics | Nursery to Class 12",
   description:
-    "CBSE curriculum from Nursery to Class 12 at Mega Mind School Tosham — science, commerce, labs, and co-curriculars.",
+    "Explore the CBSE academic curriculum at Mega Mind Sr. Sec. School Tosham. Holistic education from Nursery to 12th with Science and Commerce streams, smart labs, and experienced faculty.",
+  keywords: [
+    "CBSE curriculum Tosham",
+    "Science and commerce school Tosham",
+    "Senior secondary education Bhiwani",
+    "Primary school classes Tosham",
+    "Mega Mind school academics",
+  ],
+  alternates: {
+    canonical: "/academics",
+  },
+  openGraph: {
+    title: "CBSE Curriculum & Academics | Mega Mind Sr. Sec. School Tosham",
+    description:
+      "A complete CBSE educational pathway from foundational years to senior secondary with state-of-the-art labs and board preparation.",
+    url: `${siteConfig.url}/academics`,
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 576, alt: "Mega Mind Academics and Labs" }],
+  },
 };
 
 export default function AcademicsPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Academics", path: "/academics" },
+        ]}
+      />
+
       <section className="page-hero">
         <div className="hero-media">
           <Image
             src="/images/library.jpg"
-            alt="School library"
+            alt="School library and academic study center at Mega Mind School"
             fill
             priority
             sizes="100vw"
@@ -25,7 +51,7 @@ export default function AcademicsPage() {
           />
         </div>
         <div className="hero-overlay" />
-        <h1>Academics</h1>
+        <h1>Academic Excellence</h1>
         <p>
           CBSE pathway from early years to senior secondary — rigorous, caring,
           and future-ready.
@@ -136,9 +162,21 @@ export default function AcademicsPage() {
           </Reveal>
           <div className="facility-grid">
             {[
-              { src: "/images/lab.jpg", title: "Laboratories", text: "Science and IT labs for practical learning." },
-              { src: "/images/sports.jpg", title: "Sports & Fitness", text: "Indoor games, outdoor sports, yoga." },
-              { src: "/images/events.jpg", title: "Events & Culture", text: "Annual day, festivals, workshops." },
+              {
+                src: "/images/lab.jpg",
+                title: "Laboratories",
+                text: "Physics, Chemistry, Biology, and IT computer labs for experiential learning.",
+              },
+              {
+                src: "/images/sports.jpg",
+                title: "Sports & Fitness",
+                text: "Large sports playground, indoor games, yoga sessions, and athletics.",
+              },
+              {
+                src: "/images/events.jpg",
+                title: "Events & Culture",
+                text: "Annual day, inter-house debates, science exhibitions, and festival celebrations.",
+              },
             ].map((f) => (
               <Reveal key={f.title}>
                 <article className="facility">

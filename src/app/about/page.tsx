@@ -1,22 +1,48 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us | CBSE Affiliated School Since 2005",
   description:
-    "Founded in 2005, Mega Mind Sr. Sec. School Tosham is a CBSE co-ed school led by Principal Manisha Walia.",
+    "Discover Mega Mind Sr. Sec. School, Tosham (Bhiwani). Established in 2005, managed by Mahesh Mega Mind Shiksha Samiti, led by Principal Manisha Walia. 3-acre campus with 815+ students.",
+  keywords: [
+    "About Mega Mind School Tosham",
+    "Mega Mind Senior Secondary School history",
+    "Principal Manisha Walia Tosham",
+    "Mahesh Mega Mind Shiksha Samiti",
+    "CBSE school Bhiwani Road Tosham",
+  ],
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Mega Mind Sr. Sec. School Tosham | History & Vision",
+    description:
+      "A trusted CBSE institution in Tosham, Bhiwani nurturing curious minds with academic rigor and character since 2005.",
+    url: `${siteConfig.url}/about`,
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 576, alt: "About Mega Mind School Tosham" }],
+  },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "About Us", path: "/about" },
+        ]}
+      />
+
       <section className="page-hero">
         <div className="hero-media">
           <Image
             src="/images/campus.jpg"
-            alt="School campus"
+            alt="Mega Mind Senior Secondary School campus building in Tosham"
             fill
             priority
             sizes="100vw"
@@ -24,9 +50,9 @@ export default function AboutPage() {
           />
         </div>
         <div className="hero-overlay" />
-        <h1>Our story</h1>
+        <h1>Our Story & Mission</h1>
         <p>
-          A CBSE institution rooted in Tosham — building intellect, character,
+          A premier CBSE institution rooted in Tosham — building intellect, character,
           and community since 2005.
         </p>
       </section>
@@ -55,7 +81,7 @@ export default function AboutPage() {
           <Reveal className="about-visual">
             <Image
               src="/images/hero-campus.png"
-              alt="Mega Mind School building"
+              alt="Mega Mind School building and campus grounds"
               width={720}
               height={900}
             />
@@ -76,7 +102,7 @@ export default function AboutPage() {
                 </tr>
                 <tr>
                   <th>CBSE Affiliation</th>
-                  <td>530773 (Senior Secondary · through 31 Mar 2027)</td>
+                  <td>530773 (Senior Secondary · School Code 40747)</td>
                 </tr>
                 <tr>
                   <th>Year of Foundation</th>
@@ -133,13 +159,13 @@ export default function AboutPage() {
               </li>
               <li>
                 <strong>CBSE Affiliation</strong>
-                <p>Recognised as Affiliation No. 530773 — Senior Secondary.</p>
+                <p>Recognised as Affiliation No. 530773 — Senior Secondary status.</p>
               </li>
               <li>
                 <strong>Today</strong>
                 <p>
                   A thriving co-ed campus with Nursery–XII, labs, library,
-                  sports, and transport.
+                  sports, and student transport network.
                 </p>
               </li>
             </ul>

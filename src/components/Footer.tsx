@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Image
               src="/images/logo-official.png"
-              alt=""
+              alt="Mega Mind Sr. Sec. School Tosham Logo"
               width={64}
               height={64}
             />

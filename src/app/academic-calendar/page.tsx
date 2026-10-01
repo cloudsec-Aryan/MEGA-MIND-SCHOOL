@@ -8,10 +8,30 @@ import {
   yearMonths,
 } from "@/data/academic-calendar";
 
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { siteConfig } from "@/data/site-config";
+
 export const metadata: Metadata = {
-  title: "Academic Calendar 2026–27",
+  title: "Academic Calendar 2026–27 | Datesheet, Exams & Holidays",
   description:
-    "Mega Mind Sr. Sec. School Tosham academic calendar for 2026–27 — session start, unit tests, summer vacation, half-yearly, pre-boards, and annual result.",
+    "Official academic calendar for Mega Mind Sr. Sec. School Tosham (2026–27). Important dates for session opening, unit tests, summer vacation, half-yearly exams, and annual results.",
+  keywords: [
+    "Mega Mind school calendar 2026-27",
+    "Academic calendar CBSE Tosham",
+    "School exam datesheet Tosham",
+    "Summer vacation dates Mega Mind",
+    "CBSE holidays Tosham Bhiwani",
+  ],
+  alternates: {
+    canonical: "/academic-calendar",
+  },
+  openGraph: {
+    title: "Academic Calendar 2026–27 | Mega Mind Sr. Sec. School Tosham",
+    description:
+      "Important academic dates, exam schedules, and holiday milestones for session 2026–27.",
+    url: `${siteConfig.url}/academic-calendar`,
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 576, alt: "Mega Mind Academic Calendar" }],
+  },
 };
 
 const toneLabel: Record<string, string> = {
@@ -26,6 +46,12 @@ const toneLabel: Record<string, string> = {
 export default function AcademicCalendarPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Academic Calendar", path: "/academic-calendar" },
+        ]}
+      />
       <section className="page-hero">
         <div className="hero-media">
           <Image

@@ -1,8 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CampusReel from "@/components/CampusReel";
 import Reveal from "@/components/Reveal";
 import { calendarEvents } from "@/data/academic-calendar";
+import { siteConfig } from "@/data/site-config";
+
+export const metadata: Metadata = {
+  title: "Mega Mind Sr. Sec. School Tosham | Best CBSE School in Bhiwani",
+  description:
+    "Mega Mind Sr. Sec. School, Tosham (Bhiwani, Haryana) is a premier CBSE-affiliated co-educational senior secondary school (Affiliation No. 530773, School Code 40747). Admissions open for 2026–27 from Nursery to Class 12.",
+  keywords: siteConfig.keywords,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
@@ -130,7 +142,12 @@ export default function HomePage() {
             ].map((f) => (
               <Reveal key={f.title}>
                 <article className="facility">
-                  <Image src={f.src} alt={f.title} fill sizes="(max-width:900px) 100vw, 33vw" />
+                  <Image
+                    src={f.src}
+                    alt={`${f.title} - Mega Mind Sr. Sec. School Tosham`}
+                    fill
+                    sizes="(max-width:900px) 100vw, 33vw"
+                  />
                   <div className="facility-body">
                     <h3>{f.title}</h3>
                     <p>{f.text}</p>
