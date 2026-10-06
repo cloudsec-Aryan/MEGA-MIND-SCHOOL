@@ -72,19 +72,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
-        <div className="container about-split">
-          <Reveal className="about-visual">
-            <Image
-              src="/images/gallery/assembly-hall.jpg"
-              alt="Students in Mega Mind School assembly hall"
-              width={720}
-              height={900}
-            />
+      <section className="nurture">
+        <div className="container nurture-grid">
+          <Reveal className="nurture-visual">
+            <div className="nurture-frame">
+              <Image
+                src="/images/gallery/assembly-hall.jpg"
+                alt="Students in Mega Mind School assembly hall"
+                fill
+                sizes="(max-width: 900px) 100vw, 46vw"
+              />
+            </div>
+            <div className="nurture-year">
+              <strong>2005</strong>
+              <span>Established</span>
+            </div>
           </Reveal>
-          <Reveal className="about-copy">
+          <Reveal className="nurture-copy">
             <p className="section-label">About the school</p>
-            <h2 className="section-title">Nurturing minds since 2005</h2>
+            <h2>
+              Nurturing minds
+              <em>since 2005</em>
+            </h2>
             <p>
               Mega Mind Sr. Sec. School is a co-educational, CBSE-affiliated
               senior secondary institution managed by Mahesh Mega Mind Shiksha
@@ -97,17 +106,23 @@ export default function HomePage() {
               life are designed to spark curiosity — so every learner can Think,
               Explore, and Lead.
             </p>
-            <div className="pill-row">
-              <span className="pill">CBSE · Co-Ed</span>
-              <span className="pill">Nursery – XII</span>
-              <span className="pill">Day School</span>
-              <span className="pill">Work is Worship</span>
-            </div>
-            <div style={{ marginTop: "1.75rem" }}>
-              <Link className="btn btn-outline" href="/about">
-                More about us
-              </Link>
-            </div>
+            <ul className="nurture-facts">
+              <li>
+                <strong>CBSE · Co-Ed</strong>
+                <span>Nursery to Class 12</span>
+              </li>
+              <li>
+                <strong>Day school</strong>
+                <span>Tosham, Bhiwani</span>
+              </li>
+              <li>
+                <strong>Work is Worship</strong>
+                <span>The school motto</span>
+              </li>
+            </ul>
+            <Link className="btn btn-outline" href="/about">
+              More about us
+            </Link>
           </Reveal>
         </div>
       </section>

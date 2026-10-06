@@ -28,38 +28,41 @@ export const metadata: Metadata = {
   },
 };
 
+const particulars: { label: string; value: string; href?: string }[] = [
+  { label: "Name of the school", value: siteConfig.name },
+  { label: "Affiliation number", value: siteConfig.cbseAffiliationNo },
+  { label: "School code", value: siteConfig.schoolCode },
+  { label: "Principal", value: siteConfig.principal },
+  { label: "Year of establishment", value: String(siteConfig.establishedYear) },
+  { label: "Complete address", value: siteConfig.address.formatted },
+  { label: "Phone", value: `${siteConfig.phone}, ${siteConfig.alternatePhone}`, href: `tel:${siteConfig.phoneRaw}` },
+  { label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+];
+
 const documents = [
   {
     title: "Building Safety",
-    description:
-      "Structural safety certificate confirming the school building is fit for use.",
+    description: "Structural safety certificate confirming the school building is fit for use.",
     href: "/mandatory-disclosures/building-safety.pdf",
     download: "Building-Safety.pdf",
-    tag: "Certificate",
   },
   {
     title: "Fire Safety",
-    description:
-      "Fire safety certificate issued for the campus and its occupied buildings.",
+    description: "Fire safety certificate issued for the campus and its occupied buildings.",
     href: "/mandatory-disclosures/fire-safety.pdf",
     download: "Fire-Safety.pdf",
-    tag: "Certificate",
   },
   {
     title: "Health & Hygiene",
-    description:
-      "Sanitary and hygiene certificate for drinking water and campus upkeep.",
+    description: "Sanitary and hygiene certificate for drinking water and campus upkeep.",
     href: "/mandatory-disclosures/hygiene.pdf",
     download: "Health-and-Hygiene.pdf",
-    tag: "Certificate",
   },
   {
     title: "Land",
-    description:
-      "Land ownership document for the school site on Bhiwani Road, Tosham.",
+    description: "Land ownership document for the school site on Bhiwani Road, Tosham.",
     href: "/mandatory-disclosures/land.pdf",
     download: "Land.pdf",
-    tag: "Document",
   },
 ];
 
@@ -86,78 +89,121 @@ export default function MandatoryDisclosuresPage() {
         <div className="hero-overlay" />
         <h1>Mandatory Disclosures</h1>
         <p>
-          Official certificates and public documents, available to view or
-          download.
+          Official school particulars and public certificates, published for
+          parents and the CBSE disclosure requirement.
         </p>
       </section>
 
       <section>
         <div className="container">
           <Reveal>
-            <p className="section-label">Public documents</p>
-            <h2 className="section-title">Certificates on record</h2>
+            <p className="section-label">General information</p>
+            <h2 className="section-title">School particulars</h2>
             <p className="section-lead">
-              These documents are published for parents, guardians, and the
-              CBSE public-disclosure requirement. Open a file in the browser,
-              or save a copy.
+              Affiliation No. {siteConfig.cbseAffiliationNo} · School Code{" "}
+              {siteConfig.schoolCode}
             </p>
           </Reveal>
 
-          <div className="disclosure-grid">
-            {documents.map((doc) => (
-              <Reveal key={doc.href}>
-                <article className="disclosure-card">
-                  <div className="disclosure-top">
-                    <span className="disclosure-icon" aria-hidden="true">
-                      <svg viewBox="0 0 32 32" width="28" height="28">
-                        <path
-                          d="M8 4.5h11.2L24 9.3V27.5H8V4.5Z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M19 4.8V9.6h4.8"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M12 15.5h8M12 19.5h8M12 23.5h5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="disclosure-tag">{doc.tag}</span>
-                  </div>
-                  <h3>{doc.title}</h3>
-                  <p>{doc.description}</p>
-                  <div className="disclosure-actions">
-                    <a
-                      className="btn btn-red"
-                      href={doc.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View
-                    </a>
-                    <a
-                      className="btn btn-outline"
-                      href={doc.href}
-                      download={doc.download}
-                    >
-                      Download
-                    </a>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <div className="table-scroll">
+              <table className="data-table">
+                <colgroup>
+                  <col className="col-sno" />
+                  <col className="col-label" />
+                  <col />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">S. No.</th>
+                    <th scope="col">Information</th>
+                    <th scope="col">Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {particulars.map((row, index) => (
+                    <tr key={row.label}>
+                      <td className="sno">{String(index + 1).padStart(2, "0")}</td>
+                      <td className="info-label">{row.label}</td>
+                      <td>
+                        {row.href ? <a href={row.href}>{row.value}</a> : row.value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <p className="section-label table-section-gap">Documents</p>
+            <h2 className="section-title">Certificates on record</h2>
+            <p className="section-lead">
+              Open a file in the browser, or save a copy. These are the public
+              compliance documents held by the school.
+            </p>
+          </Reveal>
+
+          <Reveal>
+            <div className="table-scroll">
+              <table className="data-table docs-table">
+                <thead>
+                  <tr>
+                    <th scope="col">S. No.</th>
+                    <th scope="col">Document</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {documents.map((doc, index) => (
+                    <tr key={doc.href}>
+                      <td className="sno">{String(index + 1).padStart(2, "0")}</td>
+                      <td>
+                        <span className="doc-name">
+                          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                            <path
+                              d="M7 3.5h7.2L19 8.2V20.5H7V3.5Z"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.6"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M14 3.8V8.4h4.6M10 12.5h6M10 16h6"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.6"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          {doc.title}
+                        </span>
+                      </td>
+                      <td>{doc.description}</td>
+                      <td>
+                        <a
+                          className="table-link"
+                          href={doc.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View
+                        </a>
+                      </td>
+                      <td>
+                        <a className="table-link is-solid" href={doc.href} download={doc.download}>
+                          Download
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

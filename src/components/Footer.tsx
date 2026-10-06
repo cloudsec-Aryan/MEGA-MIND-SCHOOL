@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Image
-              src="/images/logo-official.png"
+              src="/images/logo-circle.png"
               alt="Mega Mind Sr. Sec. School Tosham Logo"
               width={64}
               height={64}

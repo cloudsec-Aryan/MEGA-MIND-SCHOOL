@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
@@ -7,14 +7,14 @@ import { SchoolJsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import "./globals.css";
 
-const display = Source_Serif_4({
+const display = Cormorant_Garamond({
   variable: "--font-display-family",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   style: ["normal", "italic"],
 });
 
-const body = Source_Sans_3({
+const body = Outfit({
   variable: "--font-body-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -35,8 +35,12 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   icons: {
-    icon: siteConfig.logo,
-    apple: siteConfig.logo,
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: `${siteConfig.name} | Best CBSE School in Tosham, Bhiwani`,

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { siteConfig } from "@/data/site-config";
 
 const links = [
   { href: "/", label: "Home" },
@@ -11,7 +12,7 @@ const links = [
   { href: "/academics", label: "Academics" },
   { href: "/academic-calendar", label: "Calendar" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/mandatory-disclosures", label: "Mandatory Disclosures" },
+  { href: "/mandatory-disclosures", label: "Disclosures" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -42,19 +43,39 @@ export default function Navbar() {
 
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
+      <div className="topbar">
+        <div className="topbar-inner">
+          <p className="topbar-meta">
+            <span>Work is Worship</span>
+            <span className="topbar-dot" aria-hidden="true" />
+            <span>CBSE Aff. {siteConfig.cbseAffiliationNo}</span>
+            <span className="topbar-dot topbar-hide" aria-hidden="true" />
+            <span className="topbar-hide">School Code {siteConfig.schoolCode}</span>
+          </p>
+          <p className="topbar-links">
+            <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a>
+            <a className="topbar-mail" href={`mailto:${siteConfig.email}`}>
+              {siteConfig.email}
+            </a>
+          </p>
+        </div>
+      </div>
+
       <div className="nav-inner">
         <Link className="brand" href="/">
-          <Image
-            src="/images/logo-official.png"
-            alt="Mega Mind Sr. Sec. School logo"
-            width={58}
-            height={58}
-            priority
-          />
-          <div className="brand-text">
+          <span className="brand-mark">
+            <Image
+              src="/images/logo-circle.png"
+              alt="Mega Mind Sr. Sec. School logo"
+              width={64}
+              height={64}
+              priority
+            />
+          </span>
+          <span className="brand-text">
             <strong>Mega Mind</strong>
             <span>Sr. Sec. School · Tosham</span>
-          </div>
+          </span>
         </Link>
 
         <button
